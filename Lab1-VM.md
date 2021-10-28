@@ -6,7 +6,7 @@ Podstawy deployowania VM w GCP:
 4. Deployowanie VM z Cloud Shell
 
 # Podstawy deployowania VM w GCP
-## 1 [Regiony i strefy](https://cloud.google.com/about/locations/#regions):
+## 1. [Regiony i strefy](https://cloud.google.com/about/locations/#regions):
 Niektóre zasoby Compute Engine znajdują się w regionach lub strefach. Region to określona lokalizacja geograficzna, w której możesz uruchomić swoje zasoby. Każdy region zawiera co najmniej 1 strefę. Na przykład us-central1 to region w środkowych Stanach Zjednoczonych zawierający strefy `us-central1-a`, `us-central1-b`, `us-central1-c` i `us-central1-f`. Warszawa to `europe-central2`.
 
 ![available zones](https://cdn.networkmanagementsoftware.com/wp-content/uploads/gcp-regions-and-zones-1024x362.png)
@@ -52,6 +52,7 @@ Podstawowe polecenie zdeployowania VM'ki.
 gcloud compute instances create gcelab2 --machine-type n1-standard-2 --zone europe-central2
 ```
 Output:
+
 ![vm6](figures/lab1/s14.png)
 
 **Szczegóły polecenia**

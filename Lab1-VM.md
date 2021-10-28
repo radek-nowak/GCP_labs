@@ -28,11 +28,32 @@ You can also find pricing information with the following options:
 -   Użyj rozliczeń w chmurze  [Catalog API](https://cloud.google.com/billing/v1/how-tos/catalog-api)  for programmatic access to  [SKU](https://cloud.google.com/skus)  information.
 
 ## 3. Deployowanie VM z UI
+
+Otwieramy menu w lewym górnym rogu interfejsu, wybieramy zakadkę `COMPUTE`, a następnie `VM Instances`.
+![vm1](figures/lab1/s1.png)
+
+Po aktywowaniu VM Instances, możemy stworzyć naszą instancję: `CREATE INSTANCE`.
+![vm2](figures/lab1/s8.png)
+
+Zostajemy przeniesieni do menu konfiguracji VM'ki. Tutaj przede wszytskim interesują nas: rodzaj i specyfikacja maszyny, region, HTTP oraz wycena z prawej części ekranu.
+![vm3](figures/lab1/s9.png)
+![vm4](figures/lab1/s10.png)
+
+Reszta pól może zostać zostawiona bez zmian. Żeby zakończyć proces tworzenia VM'ki, na dole ekranu klikamy `CREATE`. Wracamy do poprzedniego panelu, gdzie widoczna jest lista naszych maszyn wirtualnych. Konfiguracja zajmuje chwilę, po jej zakończeniu przy nazwie VM'ki, w polu `Status` pojawia się zielony znaczek informujący o gotowości do działania.
+Możemy się połączyć z utworzoną maszyną klikając z SSH.
+![vm5](figures/lab1/s11.png)
+Aby pozbyć się naszej maszyny, znajdujemy opcje instancji i wciskamy `Delete`.
+![vm6](figures/lab1/s13.png)
+
+
 ## 4. Deployowanie VM z Cloud Shell
 Podstawowe polecenie zdeployowania VM'ki.
 ```shell
 gcloud compute instances create gcelab2 --machine-type n1-standard-2 --zone europe-central2
 ```
+Output:
+![vm6](figures/lab1/s14.png)
+
 **Szczegóły polecenia**
 
 -   Parametr  `gcloud compute`  pozwala zarządzać zasobami Compute Engine w prostszym formacie niż Compute Engine API.
@@ -51,7 +72,9 @@ Ustawienia domyśle:
 gcloud config get-value compute/zone
 gcloud config get-value compute/region
 ```
-powyższe komendy zwracają domyślne ustawienia strefy oraz regionu. Jeśli otrzymujemy `unset`, znaczy że nie ma ustawionej domyślnej wartości
+![vm6](figures/lab1/s15.png)
+
+Powyższe komendy zwracają domyślne ustawienia strefy oraz regionu. Jeśli otrzymujemy `unset`, znaczy że nie ma ustawionej domyślnej wartości.
 
 Wygodnie jest używać zmiennych środowiskowych w celu uproszczenia poleceń oraz dla porządku.
 
@@ -69,3 +92,8 @@ Podstawowa komenda do tworzenia VM'ki wygląda teraz tak (zmienia się tylko zmi
 ```shell
 gcloud compute instances create gcelab2 --machine-type n1-standard-2 --zone $ZONE
 ```
+Aby pozbyć się naszej instancji, wpisujemy następującą komendę zawierającą nazwę VM'ki
+```shell
+gcloud comute instances delete gcelab2
+```
+![vm6](figures/lab1/s16.png)

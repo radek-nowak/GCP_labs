@@ -27,6 +27,9 @@ You can also find pricing information with the following options:
 -  Przeglądaj i pobieraj ceny z  [Pricing Table](https://cloud.google.com/billing/docs/how-to/pricing-table)  w Cloud Console.
 -   Użyj rozliczeń w chmurze  [Catalog API](https://cloud.google.com/billing/v1/how-tos/catalog-api)  for programmatic access to  [SKU](https://cloud.google.com/skus)  information.
 
+## Free tier w Compute Engine:
+![darm](figures/lab1/s2002.png)
+
 ## 3. Deployowanie VM z UI
 
 Otwieramy menu w lewym górnym rogu interfejsu, wybieramy zakadkę `COMPUTE`, a następnie `VM Instances`.
@@ -49,7 +52,7 @@ Aby pozbyć się naszej maszyny, znajdujemy opcje instancji i wciskamy `Delete`.
 ## 4. Deployowanie VM z Cloud Shell
 Podstawowe polecenie zdeployowania VM'ki.
 ```shell
-gcloud compute instances create gcelab2 --machine-type n1-standard-2 --zone europe-central2
+gcloud compute instances create gcelab --machine-type f1-micro --zone us-east1-b
 ```
 Output:
 
@@ -63,7 +66,7 @@ Output:
 Można sprawdzać ustawienia domyśle (lub czy są one w ogóle ustawione)
 -   Parametr  `gcelab2`  zawiera nazwę nowej maszyny wirtualnej.
     
--   Flaga  `--machine-type`  pozwala określić typ maszyny jako  _n1-standard-2_.
+-   Flaga  `--machine-type`  pozwala określić typ maszyny.
     
 -   Flaga  `--zone`  pozwala określić miejsce utworzenia maszyny wirtualnej.
 	-   Pominięcie flagi  `--zone`  spowoduje, że  `gcloud`  ustawi wybraną strefę na podstawie właściwości domyślnych. Jeśli w poleceniu  `create`  nie podasz pozostałych wymaganych ustawień instancji, takich jak  `machine type`  (typ maszyny) i `image`  (obraz), zostaną ustawione wartości domyślne.
@@ -79,7 +82,7 @@ Powyższe komendy zwracają domyślne ustawienia strefy oraz regionu. Jeśli otr
 
 Wygodnie jest używać zmiennych środowiskowych w celu uproszczenia poleceń oraz dla porządku.
 
-Zmienna środowiskowa do przechowywania ID projektu (ID oznaczamy jako `<ID_projektu>`)  oraz druga strefy
+Zmienna środowiskowa do przechowywania ID projektu (ID oznaczamy jako `<ID_projektu>`, bez ostrych nawiasów)  oraz druga strefy
 ```shell
 export PROJECT_ID=<ID_projektu>
 export ZONE=<strefa>
@@ -89,12 +92,16 @@ export ZONE=<strefa>
 echo $PROJECT_ID
 echo $ZONE
 ``` 
+Przykład dla strefy:
+
+![vvvss](figures/lab1/s1212.png)
+
 Podstawowa komenda do tworzenia VM'ki wygląda teraz tak (zmienia się tylko zmienna strefy)
 ```shell
-gcloud compute instances create gcelab2 --machine-type n1-standard-2 --zone $ZONE
+gcloud compute instances create gcelab --machine-type f1-micro --zone $ZONE
 ```
 Aby pozbyć się naszej instancji, wpisujemy następującą komendę zawierającą nazwę VM'ki
 ```shell
-gcloud comute instances delete gcelab2
+gcloud compute instances delete gcelab
 ```
 ![vm6](figures/lab1/s16.png)
